@@ -25,7 +25,8 @@ class HanzoDev < Formula
   end
 
   def install
-    bin.install "dev" => "hanzo-dev"
+    # Binary name varies by platform target triple
+    bin.install Dir["dev-*"].first => "hanzo-dev"
     # Also install as 'dev' for convenience
     bin.install_symlink "hanzo-dev" => "dev"
   end
