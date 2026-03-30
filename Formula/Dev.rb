@@ -1,4 +1,4 @@
-class HanzoDev < Formula
+class Dev < Formula
   desc "Hanzo Dev - AI coding assistant"
   homepage "https://github.com/hanzoai/dev"
   version "v0.6.83"
