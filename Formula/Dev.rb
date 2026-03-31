@@ -5,10 +5,10 @@ class Dev < Formula
   on_macos do
     if Hardware::CPU.arm?
       url "https://github.com/hanzoai/dev/releases/download/v0.6.83/dev-aarch64-apple-darwin.tar.gz"
-      sha256 "efbe2d8e3acd2af832b548240697f2bf2fd775fcd9221306368546c10819aa90"
+      sha256 "8457172744747b55fce70f1b879317c761256e4a88df41e82d33584836a71812"
     else
       url "https://github.com/hanzoai/dev/releases/download/v0.6.83/dev-x86_64-apple-darwin.tar.gz"
-      sha256 "318cb35f837a8bbc72d0e68ef140b5b4f9680a595bbfd7c0f204dd4073d9039b"
+      sha256 "84e6d618022bb1b3d018d20917f52a50a4e02044fa87051ee0dcce816b99bbd6"
     end
   end
 
