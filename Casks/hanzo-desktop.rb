@@ -17,7 +17,7 @@ cask "hanzo-desktop" do
     strategy :github_latest
   end
 
-  app "Hanzo Desktop.app"
+  app "Hanzo.app"
 
   zap trash: [
     "~/Library/Application Support/ai.hanzo.desktop",
