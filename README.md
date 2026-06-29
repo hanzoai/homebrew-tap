@@ -1,3 +1,5 @@
+<p align="center"><img src=".github/hero.svg" alt="homebrew-tap" width="880"></p>
+
 # Hanzo Homebrew Tap
 
 Homebrew formulae for [Hanzo AI](https://hanzo.ai) tools.
