@@ -13,12 +13,11 @@ class HanzoDev < Formula
   end
 
   def install
+    # Installs `dev` ONLY. It must not also write a `hanzo` shim: `hanzo` is the
+    # Hanzo CLI (Formula/hanzo.rb), a different program. A shim here would make
+    # `hanzo` mean "the dev coding assistant" for anyone who installed this
+    # formula first, and would collide with hanzo.rb on the same filename.
     bin.install Dir["dev-*"].first => "dev"
-    # Provide a compatibility shim
-    (bin/"hanzo").write <<~EOS
-      #!/bin/bash
-      exec "#{bin}/dev" "$@"
-    EOS
   end
 
   test do
