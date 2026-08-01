@@ -1,5 +1,5 @@
 class Hanzo < Formula
-  desc "AI engineer in your terminal: deploy and manage Hanzo Cloud"
+  desc "AI coding agent and CLI for every Hanzo Cloud product"
   homepage "https://github.com/hanzoai/cli"
   version "1.9.18"
   license "Apache-2.0"
