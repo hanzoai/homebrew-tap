@@ -18,7 +18,7 @@ brew install hanzo
 
 | Cask | What it is |
 |------|------------|
-| `hanzo-desktop` | The Hanzo desktop app — [hanzoai/desktop](https://github.com/hanzoai/desktop) |
+| `hanzo-desktop` | The Hanzo desktop app |
 
 `hanzo` installs a second name, `hanzo-node`, as a symlink to the same binary. That name
 is what the Hanzo Cloud control binary resolves first when it delegates a verb it does not
