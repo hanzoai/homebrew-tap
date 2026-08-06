@@ -1,0 +1,37 @@
+# Canonical CI/CD config for hanzoai/homebrew-tap — read by the hanzoai/ci
+# reusable (.hanzo/workflows/cicd.yml) and by platform.hanzo.ai.
+#
+# A Homebrew tap: no source, no image, so no `images:` and no `deploy:`.
+#
+# What can be wrong with a tap is exactly one thing, and it is invisible from
+# inside the repo: a formula naming a release asset that no longer resolves, or
+# a sha256 that no longer matches what the URL serves. Either one means
+# `brew install` is broken for every user while the repo still looks perfect.
+# So the gate downloads every url in every formula and checks it against the
+# sha256 sitting next to it. `#{version}` is interpolated the way Homebrew
+# interpolates it, from the formula's own `version` line.
+
+test:
+  - name: formulae resolve and match their sha256
+    run: |
+      set -euo pipefail
+      shopt -s nullglob
+      n=0
+      for f in Formula/*.rb; do
+        ver=$(sed -n 's/^[[:space:]]*version "\(.*\)"[[:space:]]*$/\1/p' "$f" | head -1)
+        [ -n "$ver" ] || { echo "::error::$f declares no version"; exit 1; }
+        pairs=$(awk -v ver="$ver" '
+          /^[[:space:]]*url "/    { u=$0; sub(/^[^"]*"/,"",u); sub(/".*$/,"",u); gsub(/#\{version\}/,ver,u); next }
+          /^[[:space:]]*sha256 "/ { s=$0; sub(/^[^"]*"/,"",s); sub(/".*$/,"",s); if (u!="") print u" "s; u="" }
+        ' "$f")
+        [ -n "$pairs" ] || { echo "::error::$f declares no url/sha256 pair"; exit 1; }
+        while read -r url sha; do
+          echo "--- $f  $url"
+          curl -fsSL --retry 3 --max-time 300 -o asset.bin "$url"
+          echo "$sha  asset.bin" | sha256sum -c -
+          rm -f asset.bin
+          n=$((n+1))
+        done <<< "$pairs"
+      done
+      [ "$n" -gt 0 ] || { echo "::error::no formula assets were checked"; exit 1; }
+      echo "checked $n formula assets"
