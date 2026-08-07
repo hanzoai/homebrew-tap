@@ -7,22 +7,22 @@ class HanzoDev < Formula
   on_macos do
     on_arm do
       url "https://github.com/hanzoai/dev/releases/download/v#{version}/dev-aarch64-apple-darwin.tar.gz"
-      sha256 "c73d07a10e995459c97c91e2f09bdab99c0df7e8fd33cef803fae1c84e8fd7e9"
+      sha256 "50daa089de904c0806b3fd50eb5debb98f1dab88c70b9da77e6f027b7984491f"
     end
     on_intel do
       url "https://github.com/hanzoai/dev/releases/download/v#{version}/dev-x86_64-apple-darwin.tar.gz"
-      sha256 "5bcac72f60dbc373fceddfe215f0c4b1e8b21a269dc1ccd9ec611be6a99c0e94"
+      sha256 "9fc7afa527d607476a700e2e1d872de347ff189d4b66db62d8199ab2113fad15"
     end
   end
 
   on_linux do
     on_arm do
       url "https://github.com/hanzoai/dev/releases/download/v#{version}/dev-aarch64-unknown-linux-musl.tar.gz"
-      sha256 "5006f5d9f5973db52c571966d95775a3f5ee3969117609447377d98a488be506"
+      sha256 "49d234aaf8d9be3c0b10ca0ad998c39d9d66ced976ddb3d0cecc16355e1109e9"
     end
     on_intel do
       url "https://github.com/hanzoai/dev/releases/download/v#{version}/dev-x86_64-unknown-linux-musl.tar.gz"
-      sha256 "70fdbcc5a453c70b8611b094b03a5380357aa5f58c1b572948e77e2b11fbd7f4"
+      sha256 "df6f3e08d12ad7986e1f35426ae7f1e688d553341fe69575df23d16aa61ad1fb"
     end
   end
 
