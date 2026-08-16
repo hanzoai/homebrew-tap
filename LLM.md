@@ -18,6 +18,22 @@ This file (`CLAUDE.md`) is the canonical agent-facing readme; `LLM.md` is a syml
 
 See the org-level `LLM.md` at `/Users/a/work/hanzo/hanzoai/LLM.md` for the full inventory of sibling repos and inter-repo dependencies.
 
+## Who writes what
+
+`Formula/hanzo.rb` is written by hanzoai/cli's release matrix (`.hanzo/workflows/
+release-matrix.yml`, job `tap`) on every tag: it reads the `.sha256` sidecars
+already uploaded beside the release assets, rewrites the version line and the four
+checksums, and reads each rewrite back before pushing. `Formula/hanzo-dev.rb` has
+no lane — the step that bumped it lived in hanzoai/dev's GitHub Actions and was
+deleted with them.
+
+**The gate here cannot see staleness, and that is the trap.** `hanzo.yml` downloads
+every url and checks it against the sha256 beside it, so a formula naming an OLD
+release stays green forever: both halves are consistent, they are simply consistent
+about the wrong version. `hanzo` sat at v1.9.18 through 35 releases that way, and
+`brew` served a CLI answering `hanzo serve` where the docs said `hanzo up`.
+Freshness is a fact about the RELEASE, so it is enforced where the release happens.
+
 ## Standing rules for this tap
 
 Every formula here must install for an unauthenticated user. A tap is a
