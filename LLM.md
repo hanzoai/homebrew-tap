@@ -23,9 +23,12 @@ See the org-level `LLM.md` at `/Users/a/work/hanzo/hanzoai/LLM.md` for the full 
 `Formula/hanzo.rb` is written by hanzoai/cli's release matrix (`.hanzo/workflows/
 release-matrix.yml`, job `tap`) on every tag: it reads the `.sha256` sidecars
 already uploaded beside the release assets, rewrites the version line and the four
-checksums, and reads each rewrite back before pushing. `Formula/hanzo-dev.rb` has
-no lane — the step that bumped it lived in hanzoai/dev's GitHub Actions and was
-deleted with them.
+checksums, and reads each rewrite back before pushing. It pushes THIS repo on
+git.hanzo.ai and the push mirror carries it to github, which is where `brew tap`
+clones from — writing github directly leaves the canonical copy a commit behind,
+with the mirror then aimed at a github main it no longer contains.
+`Formula/hanzo-dev.rb` has no lane: the step that bumped it lived in hanzoai/dev's
+GitHub Actions and was deleted with them.
 
 **The gate here cannot see staleness, and that is the trap.** `hanzo.yml` downloads
 every url and checks it against the sha256 beside it, so a formula naming an OLD
