@@ -7,7 +7,7 @@ class Hanzo < Formula
   on_macos do
     on_arm do
       url "https://github.com/hanzoai/cli/releases/download/v#{version}/hanzo-darwin-arm64.tar.gz"
-      sha256 "db3e3cf40a3ce1d3f4e41ee13c1c3d12c2808bb1d3d9a882ae1c55d11e9fb8bc"
+      sha256 "ac4cef45b4e4a57d93b656f62834811c09dd76b07b2cdf744c71c3d58d4cbb48"
     end
     on_intel do
       url "https://github.com/hanzoai/cli/releases/download/v#{version}/hanzo-darwin-amd64.tar.gz"
