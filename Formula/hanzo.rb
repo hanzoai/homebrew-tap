@@ -1,28 +1,28 @@
 class Hanzo < Formula
   desc "AI coding agent and CLI for every Hanzo Cloud product"
   homepage "https://github.com/hanzoai/cli"
-  version "8.5.925"
+  version "8.5.927"
   license "Apache-2.0"
 
   on_macos do
     on_arm do
       url "https://github.com/hanzoai/cli/releases/download/v#{version}/hanzo-darwin-arm64.tar.gz"
-      sha256 "35895ac54956b044c4fd28912ff35b4658badb0066e96dabc5592701ff21f80e"
+      sha256 "572e799b8dab0895174a77d8c5c51e84ddfd0e13bcca5b4a658aab6eea9372a8"
     end
     on_intel do
       url "https://github.com/hanzoai/cli/releases/download/v#{version}/hanzo-darwin-amd64.tar.gz"
-      sha256 "6714e5b499d41dd3e51e79d1e0d3e7d742d1b66ce1859f06dfabca639c2fc5bb"
+      sha256 "8804b068770b2a2042614f8907a32fae5d26cce731648505c6f03016d66b252b"
     end
   end
 
   on_linux do
     on_arm do
       url "https://github.com/hanzoai/cli/releases/download/v#{version}/hanzo-linux-arm64.tar.gz"
-      sha256 "cb04080ebf8e68a283175946bafa7c37c0854e4f7102398d1ecf0e83115fb16d"
+      sha256 "606a684a0c64f9c24dd4dcaaee042695291b1f9d7564eadf71c284e617716c39"
     end
     on_intel do
       url "https://github.com/hanzoai/cli/releases/download/v#{version}/hanzo-linux-amd64.tar.gz"
-      sha256 "54f52330d7a8dc78c2e561808e1a027b782d09cc4cba9c612e1d897d2e8080c7"
+      sha256 "60e20fb164db0d8da302f7649fd4b76cec7354dda8cc5124a9fbf1e5ae6883c4"
     end
   end
 
