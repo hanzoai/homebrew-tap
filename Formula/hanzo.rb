@@ -33,18 +33,20 @@ class Hanzo < Formula
 
   def install
     bin.install "hanzo"
-    # `hanzo-node` is not a second program: it is the name hanzoai/cloud's Go
+    # `hanzo-cli` is not a second program: it is the name hanzoai/cloud's Go
     # control binary resolves FIRST when it delegates a verb it does not own
-    # (cloud/cli/link.go fabricCLI -> HANZO_FABRIC_CLI, hanzo-node, hanzo).
-    # A hanzo-node at a different version than hanzo is an invisible stale
+    # (cloud/cli/link.go fabricCLI -> HANZO_FABRIC_CLI, hanzo-cli, hanzo), and
+    # the name hanzoai/cli's install.sh gives the same build. `hanzo-node` is
+    # the network node, a different program, and is not written here.
+    # A hanzo-cli at a different version than hanzo is an invisible stale
     # install: the user types `hanzo` and is silently handed an old build.
     # A symlink cannot drift the way a second copy can.
-    bin.install_symlink bin/"hanzo" => "hanzo-node"
+    bin.install_symlink bin/"hanzo" => "hanzo-cli"
   end
 
   test do
     expected = "hanzo #{version}"
     assert_equal expected, shell_output("#{bin}/hanzo --version").strip
-    assert_equal expected, shell_output("#{bin}/hanzo-node --version").strip
+    assert_equal expected, shell_output("#{bin}/hanzo-cli --version").strip
   end
 end

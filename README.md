@@ -13,20 +13,19 @@ brew install hanzo
 
 | Formula | Installs | What it is |
 |---------|----------|------------|
-| `hanzo` | `hanzo`, `hanzo-node` | The Hanzo CLI — [hanzoai/cli](https://github.com/hanzoai/cli) |
-| `hanzo-dev` | `dev` | Hanzo Dev, the terminal coding agent — [hanzoai/dev](https://github.com/hanzoai/dev) |
+| `hanzo` | `hanzo`, `hanzo-cli` | Hanzo, the one command: the terminal coding agent and every Hanzo product — [hanzoai/cli](https://github.com/hanzoai/cli) |
 
 There are no casks. `hanzo-desktop` was removed because `hanzoai/desktop` is private, so
 its release assets 404 to `brew` — the cask had never installed for anyone.
 
-`hanzo` installs a second name, `hanzo-node`, as a symlink to the same binary. That name
+`hanzo` installs a second name, `hanzo-cli`, as a symlink to the same binary. That name
 is what the Hanzo Cloud control binary resolves first when it delegates a verb it does not
-serve itself, so the two must never be separate builds — a `hanzo-node` left behind at an
+serve itself, so the two must never be separate builds — a `hanzo-cli` left behind at an
 older version is an invisible stale install.
 
-`hanzo-dev` installs `dev` and nothing else. It deliberately does not write a `hanzo`
-shim: `hanzo` is the CLI, a different program, and a shim here would shadow it for anyone
-who installed this formula first.
+There is no `hanzo-dev` formula: Hanzo is one product and one command. The coding agent is
+`hanzo` itself (`hanzo dev` is the same session), and the `dev` engine it runs comes from
+the installer below.
 
 ## First run
 
@@ -35,12 +34,8 @@ hanzo auth login     # sign in through Hanzo IAM
 hanzo --help         # every command
 ```
 
-Hanzo Dev is in the CLI as `hanzo dev`, and the `hanzo-dev` formula also puts it on your
-path on its own:
-
-```bash
-dev --help
-```
+The coding agent is the CLI: bare `hanzo` starts a session, and `hanzo dev` is the same one
+with its tool named by a flag (`hanzo dev --claude`).
 
 ## Curl instead
 
@@ -56,9 +51,5 @@ curl -fsSL https://hanzo.sh | sh
 `hanzo` is written by hanzoai/cli's release matrix — its `tap` job, on every tag. Do not
 hand-edit it: a version behind the release is a bug in that lane.
 
-`hanzo-dev` has no lane. The step that bumped it lived in hanzoai/dev's GitHub Actions and
-went with them, so it is hand-bumped until hanzoai/dev carries the step on the forge the
-way hanzoai/cli does. It was the only formula ever bumped by a robot here, which is how
-`hanzo` came to sit 35 releases behind while this file said otherwise.
 
 MIT OR Apache-2.0, at your option — see [HIP-0137](https://github.com/hanzoai/hips/blob/main/HIPs/hip-0137-one-license.md).
