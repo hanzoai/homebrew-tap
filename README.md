@@ -1,5 +1,7 @@
 # Hanzo Homebrew Tap
 
+[![Open in Hanzo](https://hanzo.app/badges/open-in-hanzo.svg)](https://hanzo.app/dev/open?repo=github.com/hanzoai/homebrew-tap&ref=main&action=open) [![Edit with Hanzo](https://hanzo.app/badges/edit-with-hanzo.svg)](https://hanzo.app/dev/open?repo=github.com/hanzoai/homebrew-tap&ref=main&action=edit) [![Deploy with Hanzo](https://hanzo.app/badges/deploy-with-hanzo.svg)](https://hanzo.app/dev/open?repo=github.com/hanzoai/homebrew-tap&ref=main&action=deploy)
+
 Homebrew formulae and casks for [Hanzo AI](https://hanzo.ai) tools.
 
 ## Install
